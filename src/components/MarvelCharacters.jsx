@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import md5 from 'md5';
 
 const MarvelCharacters = ({ character: { id, name, thumbnail, description } }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [details, setDetails] = useState(null);
+    const [isOpen, setIsOpen] = useState(false);//state to manage whether the modal is open or closed
+    const [details, setDetails] = useState(null);// to store details of the character
 
     const fetchCharacterDetails = async () => {
-        const timestamp = new Date().getTime();
-        const hash = md5(timestamp + PRIVATE_API_KEY + PUBLIC_API_KEY);
+        const timestamp = new Date().getTime();  // to generate timestamp
+        const hash = md5(timestamp + PRIVATE_API_KEY + PUBLIC_API_KEY); //md5 library hash
 
         try {
             const response = await fetch(`https://gateway.marvel.com/v1/public/characters/${id}?apikey=${PUBLIC_API_KEY}&ts=${timestamp}&hash=${hash}`);
-            const data = await response.json();
-            setDetails(data.data.results[0]);
+            const data = await response.json(); ///convert response to jason 
+            setDetails(data.data.results[0]); //set details of the character
             setIsOpen(true);
         } catch (error) {
-            console.error("Error fetching character details:", error);
+            console.error("Error fetching character details:", error); // log error if fetching fails
         }
     };
 

@@ -10,6 +10,7 @@ function App() {
   const [characters, setCharacters] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
+  ///function to fetch characters form the Marvel API//
   const fetchCharacters = async (nameStartsWith) => {
     const timestamp = new Date().getTime();
     const hash = md5(timestamp + PRIVATE_API_KEY + PUBLIC_API_KEY);
@@ -23,9 +24,12 @@ function App() {
   };
 
   useEffect(() => {
-    fetchCharacters('Spider-Man');
-  }, []);
+    ///initial fetch for characters when the component mounts
 
+    //fetchCharacters('Spider-Man');
+    fetchCharacters('Captain America');
+  }, []);
+///function to handle search 
   const handleSearch = () => {
     fetchCharacters(searchTerm);
   };
