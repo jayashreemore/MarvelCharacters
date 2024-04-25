@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import md5 from 'md5';
 import './App.css';
 
+
+
 const API_URL = "https://gateway.marvel.com/v1/public/characters";
 const PUBLIC_API_KEY = "8c603d5552fad3e025fa1a8fd502dccc";
 const PRIVATE_API_KEY = "7603206f402a60ea22d6cbb033b440a513c863bf";

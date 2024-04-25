@@ -40,8 +40,7 @@ const MarvelCharacters = ({ character: { id, name, thumbnail, description } }) =
                     </div>
                 </div>
             )}
-        </>
-    );
+        </>    );
 };
-
 export default MarvelCharacters;
+
