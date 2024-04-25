@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import md5 from 'md5';
+import React, { useState, useEffect } from 'react'; ///React Hooks used for managing state and performing side effects respectively.
+import md5 from 'md5'; //imports the MD5 hashing function for generating hashes.
 import './App.css';
+import MarvelCharacters from './components/MarvelCharacters';
 
 
 
-const API_URL = "https://gateway.marvel.com/v1/public/characters";
-const PUBLIC_API_KEY = "8c603d5552fad3e025fa1a8fd502dccc";
+const API_URL = "https://gateway.marvel.com/v1/public/characters"; ///stores the base URL for the Marvel API.
+const PUBLIC_API_KEY = "8c603d5552fad3e025fa1a8fd502dccc";          ///keys required for accessing the Marvel API.
 const PRIVATE_API_KEY = "7603206f402a60ea22d6cbb033b440a513c863bf";
 
 function App() {
-  const [characters, setCharacters] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [characters, setCharacters] = useState([]); //initializes state variables using the useState hook ,characters to store fetched characters
+  
+  const [searchTerm, setSearchTerm] = useState(''); //searchTerm to store the user's search input
 
   ///function to fetch characters form the Marvel API//
-  const fetchCharacters = async (nameStartsWith) => {
+  const fetchCharacters = async (nameStartsWith) => {  //parameter to filter characters by name
     const timestamp = new Date().getTime();
     const hash = md5(timestamp + PRIVATE_API_KEY + PUBLIC_API_KEY);
     try {
@@ -31,23 +33,27 @@ function App() {
     //fetchCharacters('Spider-Man');
     fetchCharacters('Captain America');
   }, []);
-///function to handle search 
+///function to handle search -fetch characters based on the search term entered by the user.
   const handleSearch = () => {
     fetchCharacters(searchTerm);
   };
 
-  return (
-    <div className='app'>
+
+  // return function -1st div -main container- 'app'.SEARCH button-clicked-triggers the handleSearch func-
+  //2nd div-characters?.length -conditional rendering, container holds individual character with details of it 
+  return (                
+    <div className='app'> 
       <h1>Marvel Characters</h1>
-      <div className='search'>
+      <div className='search'> 
         <input
           placeholder='Search for Characters'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)} />
         <button onClick={handleSearch}>Search</button>
+    
       </div>
       {characters?.length > 0 ? (
-        <div className="container">
+        <div className="container"> 
           {characters.map((character) => (
             <div className='character' key={character.id}>
               <div>

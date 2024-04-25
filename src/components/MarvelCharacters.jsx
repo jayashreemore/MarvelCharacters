@@ -7,7 +7,9 @@ const MarvelCharacters = ({ character: { id, name, thumbnail, description } }) =
 
     const fetchCharacterDetails = async () => {
         const timestamp = new Date().getTime();  // to generate timestamp
-        const hash = md5(timestamp + PRIVATE_API_KEY + PUBLIC_API_KEY); //md5 library hash
+        //const hash = md5(timestamp + PRIVATE_API_KEY + PUBLIC_API_KEY); //md5 library hash
+        const hash = md5(timestamp +  "7603206f402a60ea22d6cbb033b440a513c863bf" + "8c603d5552fad3e025fa1a8fd502dccc");
+
 
         try {
             const response = await fetch(`https://gateway.marvel.com/v1/public/characters/${id}?apikey=${PUBLIC_API_KEY}&ts=${timestamp}&hash=${hash}`);

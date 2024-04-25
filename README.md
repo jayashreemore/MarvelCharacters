@@ -16,7 +16,7 @@ This project is a simple web application that showcases Marvel characters retrie
 - Fetches Marvel characters from the Marvel API
 - Allows users to search for characters by name
 - Displays character information including name, description, and thumbnail image
-- Clicking on a character card opens a modal displaying additional details
+- Please all characters dont have details few old characters are just blank has only image no details at all.
 
 ## Technologies Used
 
